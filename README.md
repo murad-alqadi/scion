@@ -3,7 +3,7 @@ nft explorer<br />
 by murad alqadi<br />
 <br /><br />
 Aim:<br />
-&emsp;  At this time, many NFT explorers have been made. The aim of this project is to produce a cryptocurrency content management system built with infrastructure that is secure, agile, and scalable at its foundation with a compelling user interface. In its current form, it scion is an NFT explorer--a simple application that allows the user to access NFT metadata on the Ethereum blockchain. The user should ideally sign in with their Ethereum wallet and allow the application to store their preferred connected Ethereum address. Using their scion account, the user should be able to add NFT metadata from the explore page to a watched-list. Additionally, they can track its transaction history amongst other metrics as well.
+&emsp;  At this time, many NFT explorers have been made. The aim of this project is to produce a cryptocurrency content management system built with infrastructure that is secure, agile, and scalable at its foundation with a compelling user interface. In its current form, scion is an NFT explorer--a simple application that allows the user to access NFT metadata on the Ethereum blockchain. The user should ideally sign in with their Ethereum wallet and allow the application to store their preferred connected Ethereum address. Using their scion account, the user should be able to add NFT metadata from the explore page to a watched-list. Additionally, they can track its transaction history amongst other metrics as well.
 <br /><br />
 Methods:<br />
 &emsp;  Languages: TypeScript 4.X, HTML5, CSS3<br />
