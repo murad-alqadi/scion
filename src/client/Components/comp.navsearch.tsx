@@ -14,12 +14,13 @@ const NavSearch:FC = ({ setNFTs, setLIMIT, userId }) => {
   return(
     <div className='navbar-search'>
       <div className='owner-search'>
-        <input autoFocus className='search-input' value={ownerAddress} onChange={(e) => {
+        <input autoFocus onClick={(event) => event.target.select()} className='search-input' value={ownerAddress} onChange={(e) => {
           setOwnerAddress(e.target.value)
         }} placeholder='search by ethereum account address'></input><br />
         <div className='search-button'>
         <button onClick={
-          () => {
+          (e) => {
+            e.preventDefault();
             let contractAddressChecked: string;
             contractAddress ? contractAddressChecked = contractAddress : contractAddressChecked = '';
             FetchNFTs(ownerAddress, contractAddressChecked, setNFTs, userId)

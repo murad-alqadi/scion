@@ -11,7 +11,10 @@ const NavItem:FC = (props: AppProps) => {
 
   return(
     <li className='nav-item'>
-      <a href='#' className='icon-button' onClick={() => setOpen(!open)}>
+      <a href='#' className='icon-button' onClick={(e) => {
+        e.preventDefault();
+        setOpen(!open);
+      }}>
         ≡
       </a>
       { open && props.children }

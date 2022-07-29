@@ -9,7 +9,7 @@ import Card from './comp.card';
 
 const CardsContainer:FC = ({ setWatched, NFTs, LIMIT }) => {
   return (
-    <div>
+    <div className='cards-container'>
       <section>
         {
           NFTs && NFTs.length > 0 ? NFTs.slice(0, LIMIT).map(NFT => {

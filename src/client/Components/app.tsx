@@ -22,7 +22,7 @@ export default class App extends React.Component<AppStates, AppProps> {
   state: AppStates = {
     userId: '0xA100dfAb5e048b49F3003bF1A897A2b990472C6c',
     NFTs: [],
-    LIMIT: 100
+    LIMIT: 500
   };
 
   setUserId = async (newId: string): Promise<void> => {
