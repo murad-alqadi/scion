@@ -7,13 +7,13 @@ import '../Less/app.less';
 
 import DropDownItem from './comp.dropdownitem';
 
-const DropDown:FC = ({ userId, getFavorites }) => {
+const DropDown:FC = ({ userId, getWatched }) => {
   return(
     <div className='dropdown'>
       <DropDownItem leftIcon='Ξ' rightIcon='➡'>
         My Profile
       </DropDownItem>
-      <DropDownItem userId={userId} getFavorites={getFavorites} leftIcon='🤍'>
+      <DropDownItem userId={userId} getWatched={getWatched} leftIcon='🤍'>
         My Favorites
       </DropDownItem>
     </div>

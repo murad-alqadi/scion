@@ -14,7 +14,6 @@ const NavItem:FC = (props: AppProps) => {
       <a href='#' className='icon-button' onClick={() => setOpen(!open)}>
         ≡
       </a>
-
       { open && props.children }
     </li>
   );

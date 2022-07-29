@@ -7,25 +7,27 @@ import '../Less/app.less';
 
 import Card from './comp.card';
 
-const CardsContainer:FC = ({ NFTs, LIMIT }) => {
+const CardsContainer:FC = ({ setWatched, NFTs, LIMIT }) => {
   return (
     <div>
       <section>
         {
-          NFTs.length > 0 ? NFTs.slice(0, LIMIT).map(NFT => {
-            if (NFT.value.image !== 'https://via.placeholder.com/500'
-            && NFT.value.name !== 'SyntaxError') {
+          NFTs && NFTs.length > 0 ? NFTs.slice(0, LIMIT).map(NFT => {
+            if (NFT.image !== 'https://via.placeholder.com/500'
+            && NFT.name !== 'SyntaxError') {
               return (<Card 
-                key={NFT.value.id + NFT.value.contractAddress}
-                tokenId={NFT.value.tokenId}
-                ownerAddress={NFT.value.ownerAddress}
-                image={NFT.value.image}
-                title={NFT.value.title}
-                contractAddress={NFT.value.contractAddress}
-                description={NFT.value.description}
-                attributes={NFT.value.attributes}
-                userId={NFT.value.userId} 
-                watched={NFT.value.watched}
+                key={NFT.id}
+                tokenId={NFT.tokenId}
+                ownerAddress={NFT.ownerAddress}
+                image={NFT.image}
+                title={NFT.title}
+                contractAddress={NFT.contractAddress}
+                description={NFT.description}
+                attributes={NFT.attributes}
+                userId={NFT.userId} 
+                watched={NFT.watched}
+                setWatched={setWatched}
+                NFT={NFT}
               />);
               }
           }) : <div></div>

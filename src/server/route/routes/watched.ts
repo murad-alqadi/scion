@@ -15,10 +15,9 @@ router.route('/watched')
         }
         res.status(error.status).json(error);
       }
-      const { userId } = req.body;
       try {
         // FETCH ALL WATCHED NFT METADATA ASSOCIATED WITH USER ID
-        const response = await Watched.find({ userId: userId });
+        const response = await Watched.find({ watched: true });
         console.log('Documents successfully retrieved from MongoDB');
         res.json(response);
       } catch (err) {
