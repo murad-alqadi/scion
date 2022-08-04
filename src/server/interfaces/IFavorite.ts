@@ -1,6 +1,6 @@
-import {Document, Types} from "mongoose";
+import { Document, Types } from "mongoose";
 
-export interface IWatched extends Document{
+export interface IFavorite extends Document{
     _id: Types.ObjectId,
     tokenId: string,
     ownerAddress: string,

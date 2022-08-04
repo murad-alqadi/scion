@@ -1,6 +1,7 @@
-import mongoose, {Connection, Mongoose} from 'mongoose';
-import {configs} from './configs';
-import {IConfigs} from "./interfaces/IConfigs";
+import mongoose, { Connection, Mongoose } from 'mongoose';
+
+import { configs } from './configs';
+import { IConfigs } from "./interfaces/IConfigs";
 
 class Database {
     private readonly _config: IConfigs;

@@ -1,4 +1,4 @@
-import watched from './routes/watched'
+import favorite from './routes/favorite'
 
 // DEFAULT API ROUTE HANDLER
-export default { watched };
+export default { favorite };

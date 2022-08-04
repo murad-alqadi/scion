@@ -1,7 +1,8 @@
 import express, {Request, Response, Router, Express} from 'express';
+import { RequestHandler } from 'express-serve-static-core';
+
 import router from './route';
 import DBConnect from "./dbConfigs";
-import { RequestHandler } from 'express-serve-static-core';
 
 // APP IS EXPRESS
 const app: Express = express();

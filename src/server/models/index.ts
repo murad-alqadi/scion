@@ -1,6 +1,10 @@
-import Watched from "./watched"
+import User from "./userModel"
+import Album from "./albumModel"
+import Favorite from "./favoriteModel"
 
 // DEFAULT MONGOOSE MODEL HANDLER
 export {
-    Watched
+    User,
+    Album,
+    Favorite
 }

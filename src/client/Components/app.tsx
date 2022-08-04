@@ -2,7 +2,7 @@ import * as React from 'react';
 import { apiRoute } from '../utils';
 import { AppStates, AppProps } from '../types/index';
 import { Get, Post, Put, Delete } from '../Services/index';
-import { IWatched } from "../../server/interfaces/IWatched";
+import { IFavorite } from "../../server/interfaces/IFavorite";
 
 import '../Less/app.less';
 
@@ -29,7 +29,7 @@ export default class App extends React.Component<AppStates, AppProps> {
     return this.setState({ userId: newId });
   }
 
-  setNFTs = async (NFTs: IWatched): Promise<void> => {
+  setNFTs = async (NFTs: IFavorite): Promise<void> => {
     return this.setState({ NFTs: NFTs });
   }
 
@@ -39,7 +39,7 @@ export default class App extends React.Component<AppStates, AppProps> {
 
   getWatched = async (): Promise<void> => {
     try {
-      const res: any = await Get(apiRoute.getRoute('watched'));
+      const res: any = await Get(apiRoute.getRoute('favorite'));
       console.log(res);
       this.setState({NFTs: res});
     } catch (e) {
@@ -50,7 +50,7 @@ export default class App extends React.Component<AppStates, AppProps> {
   setWatched = async (NFT: IWatched): Promise<void> => {
     try {
       const res: IWatched = await Post(
-        apiRoute.getRoute('watched'),
+        apiRoute.getRoute('favorite'),
         NFT
       );
       console.log('Successfully stored in MongoDB: ', NFT)

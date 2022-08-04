@@ -1,13 +1,15 @@
-import {Types} from 'mongoose';
-import router from '../router';
-import {Watched} from '../../models';
-import {Request, Response} from "express";
-import {IWatched} from "../../interfaces/IWatched";
-import {IError} from '../../interfaces/IError';
+import { Request, Response } from "express";
+import { Types } from 'mongoose';
 
-router.route('/watched')
+import { Favorite } from '../../models';
+import { IFavorite } from "../../interfaces/IFavorite";
+import { IError } from '../../interfaces/IError';
+import router from '../router';
+
+
+router.route('/favorite')
     .get(async (req: Request, res: Response) => {
-      console.log(`Received ${req.method} request at api/watched`)
+      console.log(`Received ${req.method} request at api/favorites`)
       if (!req.body) {
         const error : IError = {
           status: 500,
@@ -16,8 +18,8 @@ router.route('/watched')
         res.status(error.status).json(error);
       }
       try {
-        // FETCH ALL WATCHED NFT METADATA ASSOCIATED WITH USER ID
-        const response = await Watched.find({ watched: true });
+        // FETCH ALL FAVORITES NFT METADATA ASSOCIATED WITH USER ID
+        const response = await Favorite.find({});
         console.log('Documents successfully retrieved from MongoDB');
         res.json(response);
       } catch (err) {
@@ -30,7 +32,7 @@ router.route('/watched')
       }
     })
     .post(async (req: Request, res: Response) => {
-      console.log(`Received ${req.method} request at api/watched`)
+      console.log(`Received ${req.method} request at api/favorite`)
       if (!req.body) {
         const error : IError = {
           status: 500,
@@ -38,11 +40,11 @@ router.route('/watched')
         }
         res.status(error.status).json(error);
       }
-      // SAVE POSTED METADATA IN WATCHED COLLECTION
-      const { tokenId, ownerAddress, contractAddress, image, title, description, attributes, userId, watched }: IWatched = req.body;
-        const Attempt: IWatched = new Watched({ _id: Types.ObjectId(), tokenId, ownerAddress, contractAddress, image, title, description, attributes, userId, watched });
+      // SAVE POSTED METADATA IN FAVORITES COLLECTION
+      const { tokenId, ownerAddress, contractAddress, image, title, description, attributes, userId }: IFavorite = req.body;
+        const Attempt: IFavorite = new Favorite({ _id: Types.ObjectId(), tokenId, ownerAddress, contractAddress, image, title, description, attributes, userId });
         try {
-          const saveAttempt: IWatched = await Attempt.save();
+          const saveAttempt: IFavorite = await Attempt.save();
           console.log(`Document successfully stored in MongoDB ${tokenId}`);
           res.status(201).json(saveAttempt);
         } catch (err) {
@@ -55,7 +57,7 @@ router.route('/watched')
         }
     })
     .put(async (req: Request, res: Response) => {
-      console.log(`Received ${req.method} request at api/watched`)
+      console.log(`Received ${req.method} request at api/favorite`)
       if (!req.body) {
         const error: IError = {
           status: 500,
@@ -64,12 +66,12 @@ router.route('/watched')
         res.status(error.status).json(error);
       }
       // DECONSTRUCT REQ.BODY OBJECT FOR SECURITY PURPOSES
-      const { tokenId, ownerAddress, contractAddress, image, title, description, attributes, userId, watched }: IWatched = req.body;
+      const { tokenId, ownerAddress, contractAddress, image, title, description, attributes, userId }: IFavorite = req.body;
       // RECONSTRUCT PARAMS OBJECT TO DELETE PROPERTIES WITH UNDEFINED VALUES TO PREVENT OVERWRITING WITH NULL
-      const params: any = { ownerAddress, contractAddress, image, title, description, attributes, userId, watched };
+      const params: any = { ownerAddress, contractAddress, image, title, description, attributes, userId };
       for (const prop in params) if(!params[prop]) delete params[prop];
       try {
-        const response = await Watched.findOneAndUpdate({ tokenId: tokenId }, params, { upsert: true, useFindAndModify: false })
+        const response = await Favorite.findOneAndUpdate({ tokenId: tokenId }, params, { upsert: true, useFindAndModify: false })
         console.log(`Document successfully updated in MongoDB: ${tokenId}`);
         res.status(200).json(response);
       } catch (err) {
@@ -82,7 +84,7 @@ router.route('/watched')
       }
     })
     .delete(async (req: Request, res: Response) => {
-      console.log(`Received ${req.method} request at api/watched`)
+      console.log(`Received ${req.method} request at api/favorite`)
       if (!req.body) {
         const error: IError = {
           status: 500,
@@ -93,7 +95,7 @@ router.route('/watched')
       // DELETE NFT METADATA BY TOKENID
       const { tokenId }: { tokenId: string } = req.body;
       try {
-        const response = await Watched.deleteOne({ tokenId: tokenId });
+        const response = await Favorite.deleteOne({ tokenId: tokenId });
         console.log(`Document successfully deleted from MongoDB: ${tokenId}`);
         res.status(200).json(response);
       } catch (err) {
