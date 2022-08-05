@@ -14,19 +14,26 @@ const NavSearch:FC = ({ setNFTs, setLIMIT, userId }) => {
   return(
     <div className='navbar-search'>
       <div className='owner-search'>
-        <input autoFocus onClick={(event) => event.target.select()} className='search-input' value={ownerAddress} onChange={(e) => {
-          setOwnerAddress(e.target.value)
-        }} placeholder='search by ethereum account address'></input><br />
+        <input 
+          className='search-input' 
+          autoFocus onClick={(event) => event.target.select()} 
+          value={ownerAddress} 
+          placeholder='search by ethereum account address'
+          onChange={(e) => {
+            setOwnerAddress(e.target.value)
+          }} 
+        />
+        <br />
         <div className='search-button'>
-        <button onClick={
-          (e) => {
-            e.preventDefault();
-            let contractAddressChecked: string;
-            contractAddress ? contractAddressChecked = contractAddress : contractAddressChecked = '';
-            FetchNFTs(ownerAddress, contractAddressChecked, setNFTs, userId)
-          }
-        }>{"➜"}</button>
-      </div>
+          <button 
+            onClick={(e) => {
+                e.preventDefault();
+                let contractAddressChecked: string;
+                contractAddress ? contractAddressChecked = contractAddress : contractAddressChecked = '';
+                FetchNFTs(ownerAddress, contractAddressChecked, setNFTs, userId);
+            }} 
+          />{"➜"}
+        </div>
       </div>
       {/* <input value={contractAddress} className='contract-search' onChange={(e) => setContractAddress(e.target.value)} placeholder='Focus search with contract address (optional)'></input><br /> */}
     </div>

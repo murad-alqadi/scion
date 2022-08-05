@@ -1,6 +1,6 @@
 {
   "ignore": [
-    "**/*.watched.ts",
+    "**/*.favorite.ts",
     "**/*.spec.ts",
     "node_modules",
     "src/client"

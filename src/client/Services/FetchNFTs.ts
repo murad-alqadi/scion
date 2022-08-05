@@ -61,7 +61,7 @@ const getNFTMetadata = async (
       description: metadata.metadata.description,
       attributes: metadata.metadata.attributes,
       userId: userId,
-      watched: false
+      favorite: false
     }
   }));
 }

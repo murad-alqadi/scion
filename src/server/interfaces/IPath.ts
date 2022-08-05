@@ -2,6 +2,6 @@ export interface IPathRoute {
     methods: string[];
 }
 
-export interface Ipath{
+export interface IPath{
     [route: string]: IPathRoute
 }

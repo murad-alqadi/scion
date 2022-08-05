@@ -15,8 +15,8 @@ export default class App extends React.Component<AppStates, AppProps> {
     this.setUserId = this.setUserId.bind(this);
     this.setNFTs = this.setNFTs.bind(this);
     this.setLIMIT = this.setLIMIT.bind(this);
-    this.getWatched = this.getWatched.bind(this);
-    this.setWatched = this.setWatched.bind(this);
+    this.getFavorite = this.getFavorite.bind(this);
+    this.setFavorite = this.setFavorite.bind(this);
   }
 
   state: AppStates = {
@@ -37,7 +37,7 @@ export default class App extends React.Component<AppStates, AppProps> {
     return this.setState({ LIMIT: n });
   }
 
-  getWatched = async (): Promise<void> => {
+  getFavorite = async (): Promise<void> => {
     try {
       const res: any = await Get(apiRoute.getRoute('favorite'));
       console.log(res);
@@ -47,9 +47,9 @@ export default class App extends React.Component<AppStates, AppProps> {
     }
   }
 
-  setWatched = async (NFT: IWatched): Promise<void> => {
+  setFavorite = async (NFT: IFavorite): Promise<void> => {
     try {
-      const res: IWatched = await Post(
+      const res: IFavorite = await Post(
         apiRoute.getRoute('favorite'),
         NFT
       );
@@ -66,12 +66,12 @@ export default class App extends React.Component<AppStates, AppProps> {
           setUserId={this.setUserId}
           setNFTs={this.setNFTs}
           setLIMIT={this.setLIMIT}
-          getWatched={this.getWatched}
+          setFavorite={this.setFavorite}
           userId={this.state.userId}
         />
         <div className='main-container'>
           <CardsContainer 
-            setWatched={this.setWatched}
+            setFavorite={this.setFavorite}
             NFTs={this.state.NFTs}
             LIMIT={this.state.LIMIT}
           />

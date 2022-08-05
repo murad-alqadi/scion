@@ -1,6 +1,6 @@
 import { Document, Types } from "mongoose";
 
-export interface IFavorite extends Document{
+export interface IPhoto extends Document{
     _id: Types.ObjectId,
     tokenId: string,
     ownerAddress: string,
@@ -12,4 +12,3 @@ export interface IFavorite extends Document{
     userId: string,
     favorite: boolean,
 }
-

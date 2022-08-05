@@ -10,5 +10,5 @@ export interface IUser extends Document{
     description: string,
     attributes: [],
     userId: string,
-    watched: boolean,
+    favorite: boolean,
 }

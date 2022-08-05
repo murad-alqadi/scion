@@ -9,7 +9,7 @@ import NavSearch from './comp.navsearch';
 import NavItem from './comp.navitem';
 import DropDown from './comp.dropdown';
 
-const NavBar:FC = ({ setUserId, setOwnerAddress, setContractAddress, getWatched, setNFTs, setLIMIT, userId, ownerAddress, contractAddress }) => {
+const NavBar:FC = ({ setUserId, setOwnerAddress, setContractAddress, getFavorite, setNFTs, setLIMIT, userId, ownerAddress, contractAddress }) => {
   return(
     <nav className='navbar'>
       <span className='title'>scion</span>
@@ -25,7 +25,10 @@ const NavBar:FC = ({ setUserId, setOwnerAddress, setContractAddress, getWatched,
       />
       <ul className='navbar-nav'>
         <NavItem>
-          <DropDown userId={userId} getWatched={getWatched} />
+          <DropDown 
+            userId={userId} 
+            getFavorite={getFavorite} 
+          />
         </NavItem>
       </ul>
     </nav>

@@ -7,7 +7,7 @@ import '../Less/app.less';
 
 import Card from './comp.card';
 
-const CardsContainer:FC = ({ setWatched, NFTs, LIMIT }) => {
+const CardsContainer:FC = ({ setFavorite, NFTs, LIMIT }) => {
   return (
     <div className='cards-container'>
       <section>
@@ -25,8 +25,8 @@ const CardsContainer:FC = ({ setWatched, NFTs, LIMIT }) => {
                 description={NFT.description}
                 attributes={NFT.attributes}
                 userId={NFT.userId} 
-                watched={NFT.watched}
-                setWatched={setWatched}
+                favorite={NFT.favorite}
+                setFavorite={setFavorite}
                 NFT={NFT}
               />);
               }
