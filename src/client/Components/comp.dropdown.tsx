@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { FC } from 'react';
 import { apiRoute } from '../utils';
-import { AppProps } from '../types/index';
+import { DropdownProps } from '../types/index';
 
 import '../Less/app.less';
 
 import DropDownItem from './comp.dropdownitem';
 
-const DropDown:FC = ({ userId, getFavorite }) => {
+const DropDown:FC<DropdownProps> = ({ userId, getFavorite }) => {
   return(
     <div className='dropdown'>
       <DropDownItem 

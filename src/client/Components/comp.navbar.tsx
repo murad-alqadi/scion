@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FC } from 'react';
 import { apiRoute } from '../utils';
-import { AppProps } from '../types/index';
+import { NavbarProps } from '../types/index';
 
 import '../Less/app.less';
 
@@ -9,7 +9,17 @@ import NavSearch from './comp.navsearch';
 import NavItem from './comp.navitem';
 import DropDown from './comp.dropdown';
 
-const NavBar:FC = ({ setUserId, setOwnerAddress, setContractAddress, getFavorite, setNFTs, setLIMIT, userId, ownerAddress, contractAddress }) => {
+const NavBar:FC<NavbarProps> = ({ 
+    setUserId, 
+    setOwnerAddress, 
+    setContractAddress, 
+    getFavorite, 
+    setNFTs, 
+    setLIMIT, 
+    userId, 
+    ownerAddress, 
+    contractAddress 
+}) => {
   return(
     <nav className='navbar'>
       <span className='title'>scion</span>

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { apiRoute } from '../utils';
-import { AppStates, AppProps } from '../types/index';
+import { AppProps } from '../types/index';
 import { Get, Post, Put, Delete } from '../Services/index';
 import { IFavorite } from "../../server/interfaces/IFavorite";
 
@@ -9,8 +9,8 @@ import '../Less/app.less';
 import CardsContainer from './container.cards';
 import NavBar from './comp.navbar';
 
-export default class App extends React.Component<AppStates, AppProps> {
-  constructor (props: any) {
+export default class App extends React.Component<AppProps> {
+  constructor (props: AppProps) {
     super(props);
     this.setUserId = this.setUserId.bind(this);
     this.setNFTs = this.setNFTs.bind(this);
@@ -19,7 +19,7 @@ export default class App extends React.Component<AppStates, AppProps> {
     this.setFavorite = this.setFavorite.bind(this);
   }
 
-  state: AppStates = {
+  state: AppProps = {
     userId: '0xA100dfAb5e048b49F3003bF1A897A2b990472C6c',
     NFTs: [],
     LIMIT: 500
@@ -49,7 +49,7 @@ export default class App extends React.Component<AppStates, AppProps> {
 
   setFavorite = async (NFT: IFavorite): Promise<void> => {
     try {
-      const res: IFavorite = await Post(
+      await Post(
         apiRoute.getRoute('favorite'),
         NFT
       );

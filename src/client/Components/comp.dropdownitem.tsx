@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { FC } from 'react';
 import { apiRoute } from '../utils';
-import { AppProps } from '../types/index';
+import { DropdownItemProps } from '../types/index';
 
 import '../Less/app.less';
 
-const DropDownItem:FC = ({ leftIcon, children, rightIcon, getFavorite }) => {
+const DropDownItem:FC<DropdownItemProps> = ({ leftIcon, children, rightIcon, getFavorite }) => {
 
   return (
     <a className='menu-item'

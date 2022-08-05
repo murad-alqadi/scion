@@ -2,7 +2,7 @@ export default async function FetchNFTs(
   ownerAddress: string,
   contractAddress: string,
   setNFTs: any,
-  userId: string
+  userId: string,
 ): Promise<any>{
   const API_KEY = 'e4xa9lvbY42JZDILglX_o_ZHBpLGEHzR';
   const endpoint = `https://eth-mainnet.g.alchemy.com/v2/${API_KEY}`;
@@ -10,7 +10,7 @@ export default async function FetchNFTs(
   if (data.ownedNfts.length) {
     const NFTs = await getNFTMetadata(endpoint, data.ownedNfts, userId, ownerAddress);
     const fulfilledNFTs = NFTs.filter(NFT => NFT.status = 'fulfilled');
-    const deepNFTs = [];
+    const deepNFTs: any[] = [];
     fulfilledNFTs.forEach(NFT => deepNFTs.push(NFT.value));
     deepNFTs !== null ? setNFTs(deepNFTs) : setNFTs(null);
   }

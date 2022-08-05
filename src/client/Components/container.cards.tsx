@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { FC } from 'react';
 import { apiRoute } from '../utils';
-import { AppProps } from '../types/index';
+import { CardContProps } from '../types/index';
 
 import '../Less/app.less';
 
 import Card from './comp.card';
 
-const CardsContainer:FC = ({ setFavorite, NFTs, LIMIT }) => {
+const CardsContainer:FC<CardContProps> = ({ setFavorite, NFTs, LIMIT }) => {
   return (
     <div className='cards-container'>
       <section>

@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { FC } from 'react';
 import { apiRoute } from '../utils';
-import { AppProps } from '../types/index';
+import { NavSearchProps } from '../types/index';
 import { FetchNFTs } from "../Services";
 
 import '../Less/app.less';
 
-const NavSearch:FC = ({ setNFTs, setLIMIT, userId }) => {
+const NavSearch:FC<NavSearchProps> = ({ setNFTs, setLIMIT, userId }) => {
 
   const [ownerAddress, setOwnerAddress] = React.useState('');
   const [contractAddress, setContractAddress] = React.useState('');

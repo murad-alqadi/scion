@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { FC } from 'react';
 import { apiRoute } from '../utils';
+import { CardProps } from '../types/index';
 import '../Less/app.less';
 
-const Card:FC = ({ 
+const Card:FC<CardProps> = ({ 
     image, 
     tokenId, 
     ownerAddress, 
